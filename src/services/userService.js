@@ -17,6 +17,7 @@ const index = async () => {
     return data;
   } catch (error) {
     console.error(error);
+    throw new Error(err);
   }
 };
 
