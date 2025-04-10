@@ -10,9 +10,8 @@ const CocktailList = () => {
     const fetchCocktails = async () => {
       const promises = Array.from({ length: 6 }, () => getRandom());
       const results = await Promise.all(promises);
-
       const validResults = results.filter(Boolean);
-      setCocktails(validResults);
+      setCocktails(validResults[0]);
     };
 
     fetchCocktails();
@@ -26,7 +25,7 @@ const CocktailList = () => {
 
       <div className={styles.container}>
         {cocktails.map((cocktail, index) => (
-          <Link key={index} to={`/cocktails/${cocktail.name}`}>
+          <Link key={index} to={`/cocktails/${cocktail.drink}`}>
             <article key={index}>
               <div className={styles.imageWrapper}>
                 <img
@@ -37,7 +36,7 @@ const CocktailList = () => {
               </div>
               <div className={styles.contentWrapper}>
                 <header>
-                  <h2>{cocktail.name}</h2>
+                  <h2>{cocktail.drinkName}</h2>
                 </header>
                 <p>{cocktail.instructions?.slice(0, 100)}...</p>
               </div>
