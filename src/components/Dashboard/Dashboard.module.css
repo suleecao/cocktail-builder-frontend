@@ -1,0 +1,111 @@
+.container {
+  gap: 14px;
+  width: 100%;
+  display: grid;
+  padding: 21px;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.container article {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 21px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background-color: var(--card-background);
+  box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
+
+}
+
+.imageWrapper {
+  flex-shrink: 0;
+}
+
+.contentWrapper {
+  flex: 1;
+  text-align: left;
+}
+
+.container article header {
+  margin-bottom: 14px;
+}
+
+.container article h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 36px;
+  color: var(--dark-green);
+}
+
+.container article p {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 480px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background: white;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #aaa;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 90px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.dashboardButton {
+  background-color: var(--dark-green);
+  color: white;
+  padding: 10px 32px;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: "Noto Serif", serif;
+  border: none;
+  display: inline-block;
+  text-align: center;
+  min-width: 140px;
+}
+
+.dashboardButton:hover {
+  background-color: #1e2d18c7;
+}
+
+.dashboardButtonSecondary {
+  background-color: transparent;
+  color: var(--dark-green);
+  border: 2px solid var(--dark-green);
+  padding: 10px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "Noto Serif", serif;
+  display: inline-block;
+  text-align: center;
+  min-width: 140px;
+}
+
+.dashboardButtonSecondary:hover {
+  background-color: var(--dark-green);
+  color: white;
+}

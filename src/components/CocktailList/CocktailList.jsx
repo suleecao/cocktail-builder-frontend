@@ -33,29 +33,33 @@ const CocktailList = () => {
   if (cocktails.length === 0) return <p>Loading...</p>;
 
   return (
-    <main className={styles.container}>
-      {cocktails.map((cocktail, index) => (
-        <article key={index}>
-        <Link to={`/cocktails/${cocktail.name}`}>
+    <main className={styles.pageWrapper}>
+      <h1>You May Like These Cocktails</h1>
+
+      <div className={styles.container}>
+        {cocktails.map((cocktail, index) => (
+            <article key={index}>
+          <Link to={`/cocktails/${cocktail.name}`}>
           <div className={styles.imageWrapper}>
-              <img
-                src={cocktail.image}
-                alt={cocktail.name}
-                style={{ width: "200px", borderRadius: "12px" }}
-              />
-            </div>
-            <div className={styles.contentWrapper}>
-              <header>
-                <h2>{cocktail.name}</h2>
-              </header>
-              <p>{cocktail.instructions?.slice(0, 100)}...</p>
-            </div>
-        </Link>
-         <button onClick={() => toggleFavorite(cocktail.name)}>
+                <img
+                  src={cocktail.image}
+                  alt={cocktail.name}
+                  className={styles.cocktailImage}
+                />
+              </div>
+              <div className={styles.contentWrapper}>
+                <header>
+                  <h2>{cocktail.name}</h2>
+                </header>
+                <p>{cocktail.instructions?.slice(0, 100)}...</p>
+              </div>
+            </Link>
+           <button onClick={() => toggleFavorite(cocktail.name)}>
          {favorites.includes(cocktail.name) ? 'Remove from Favorites' : 'Add to Favorites'}
        </button>
        </article>
       ))}
+      </div>
     </main>
   );
 };

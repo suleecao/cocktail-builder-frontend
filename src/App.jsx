@@ -8,11 +8,10 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import CocktailList from './components/CocktailList/CocktailList';
+import CocktailDetails from './components/CocktailDetails/CocktailDetails.jsx';
 import CocktailForm from './components/CocktailForm/CocktailForm';
-
-
+import CocktailsData from "./cocktailsData.js";
 import * as cocktailService from './services/cocktailService';
-import CocktailDetails from './components/CocktailDetails/CocktailDetails';
 
 
 
@@ -48,9 +47,9 @@ function App() {
         {
           user ? (
           <>
-          <Route path='/cocktails' element={<CocktailList cocktails={cocktails}/>} />
-          <Route path='/cocktails/new' element={<CocktailForm handleAddCocktail={handleAddCocktail} />} />
-          <Route path='/cocktails/:cocktailId' element={<CocktailDetails handleDeleteCocktail={handleDeleteCocktail} />} />
+            <Route path='/cocktails' element={<CocktailList />} />
+            <Route path='/cocktails/:cocktailId' element={<CocktailDetails />} />
+            <Route path='/add' element={<CocktailForm />} />
           </>
           ) : (
          <>

@@ -1,12 +1,62 @@
-# React + Vite
+# 🍸 Cocktail Builder 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 🍹 Build and discover drinks you love
 
-Currently, two official plugins are available:
+Welcome to Cocktail Builder, a full-stack MERN application for creating and discovering custom cocktail recipes. Users can sign up, log in, and build their own drink creations—or explore a list of random cocktails for inspiration!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Our team of three wanted to build a creative, personalized app that lets users explore and document cocktail recipes. We collaborated on both the frontend and backend.
 
-## Expanding the ESLint configuration
+## 📸 Screenshot
+![Cocktail Builder Screenshot](./src/assets/images/cocktail-builder-cover.png)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Live Demo
+[📝 Try Cocktail Builder Here](https://placehold.co/)
+
+
+## 🧭 Navigation & Features
+- Landing page for guest users
+- Sign Up / Sign In pages with secure form validation
+
+Dashboard with:
+- Personalized greeting
+- Search bar
+- Category links (Add Drink, Random, Favorites, Popular)
+- Random cocktail recommendations
+
+Add Drink form with:
+- Custom ingredients
+- Unit and glassware dropdowns
+- Directions field
+
+
+## 🎨 Planning Materials
+We used [Figma](https://www.figma.com/design/0wn8PXxEaKEn148ovLZarL/Cocktail-Builder-App?node-id=63-120&t=fqpVLOUCcquVKavF-1) (view the board) to plan the look and feel of the website, and [Trello](https://trello.com/invite/b/67f00fd1b4f9f732341a7af5/ATTI7c85234dd070e10faa3a2e8b369b6f42B59E8884/basic-board) to manage the development process. 
+
+
+## 🛠️ Technologies Used
+Frontend:
+- React
+- React Router DOM
+- Context API
+- CSS Flexbox and Grid
+
+Backend: 
+[View Backend Repo Here:](https://github.com/suleecao/cocktail-builder-backend)
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+
+## 🔐 Auth & Security
+- JWT-based user authentication
+- Password hashing with bcrypt
+- Protected routes for authorized users
+
+## 📝 Sources & Credits
+- The fonts are from Google Fonts
+- Photos and icons are from [Canva](https://www.canva.com)
+
+## 🔮 Future Improvements
+🔹 Allow users to upload cocktail images
+
+🔹 Ability to filter cocktails based on tags
