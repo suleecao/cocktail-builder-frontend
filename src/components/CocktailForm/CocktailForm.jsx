@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams }  from "react-router";
 import styles from "../Form.module.css";
+import CocktailList from "../CocktailList/CocktailList";
+import * as CocktailService from '../../services/cocktailService'
 
 const unitOptions = ["oz", "tsp", "tbsp", "ml", "dash", "drop", "cup", "part"];
 const glassesArr = [
@@ -37,13 +40,15 @@ const glassesArr = [
   "Coupe Glass",
 ];
 
-export default function CocktailForm() {
+ const CocktailForm = (props) => {
   const [cocktailName, setCocktailName] = useState("");
   const [directions, setDirections] = useState("");
   const [glass, setGlass] = useState(glassesArr[""]);
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", unit: "oz" },
   ]);
+  const { cocktailId } = useParams();
+  console.log(cocktailId);
 
   const handleIngredientChange = (index, field, value) => {
     const updated = [...ingredients];
@@ -64,6 +69,24 @@ export default function CocktailForm() {
     const ingredient = ingredients[index];
     console.log(`${ingredient.name} : ${ingredient.amount} ${ingredient.unit}`);
   };
+
+  const handleEditCocktail= (evt) => {
+    evt.preventDefault();
+    if (cocktailId) {
+      props.handleUpdateCocktail(cocktailId, setIngredients);
+    } else {
+      props.handleAddCocktail(setCocktailName)
+    }
+  };
+
+  useEffect(() => {
+    const fetchCocktail = async () => {
+      const cocktailData = await CocktailService.show(cocktailId);
+      setIngredients(cocktailData);
+    };
+    if (cocktailId) fetchCocktail();
+    return () => setIngredients({ name: "", amount: "", unit: "oz" });
+}, [cocktailId]);
 
   return (
     <div className={styles.formWrapper}>
@@ -142,6 +165,15 @@ export default function CocktailForm() {
             onChange={(e) => setDirections(e.target.value)}
           />
         </div>
+        <div>
+          <h2>{cocktail.creator === user._id && (
+            <button onClick={handleEditCocktail}>Edit drink</button>
+          )}
+          </h2>
+         
+
+
+        </div>
         <div className={styles.buttonGroup}>
           <button type="button" onClick={addIngredient}>
             Add Ingredient
@@ -152,3 +184,5 @@ export default function CocktailForm() {
     </div>
   );
 }
+
+export default CocktailForm;
