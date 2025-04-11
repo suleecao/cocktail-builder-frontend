@@ -79,6 +79,10 @@ const glassesArr = [
     }
   };
 
+  const handleDeleteCocktail = (cocktailId) => {
+    props.handleDeleteCocktail(cocktailId);
+  };
+
   useEffect(() => {
     const fetchCocktail = async () => {
       const cocktailData = await CocktailService.show(cocktailId);
@@ -170,9 +174,11 @@ const glassesArr = [
             <button onClick={handleEditCocktail}>Edit drink</button>
           )}
           </h2>
-         
-
-
+          <h2>{cocktail.creator === user._id && (
+            <button onClick={props.handleDeleteCocktail(cocktailId)}>Delete drink</button>
+          )}
+          </h2>
+        
         </div>
         <div className={styles.buttonGroup}>
           <button type="button" onClick={addIngredient}>
