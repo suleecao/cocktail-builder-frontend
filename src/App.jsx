@@ -31,12 +31,15 @@ function App() {
     navigate('/cocktails/favorites');
   };
   
-  const handleGetFavorites = async () => {
-    const userFavorites = userService.getFavorites(user._id);
-    setFavorites(userFavorites);
-    console.log(favorites, userFavorites);
-    // navigate('/favorites');
-    
+ const handleGetFavorites = async () => {
+    try {
+      const userFavorites = await userService.getFavorites(user._id);
+      console.log('Fetched favorites:', userFavorites);
+      setFavorites(userFavorites);
+    } catch (err) {
+      console.error('Error fetching favorites:', err);
+      setFavorites([]); 
+    }
   };
 
   useEffect(() => {

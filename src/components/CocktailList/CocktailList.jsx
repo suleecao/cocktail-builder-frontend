@@ -46,7 +46,7 @@ const CocktailList = () => {
       <div className={styles.container}>
         {cocktails.map((cocktail, index) => (
             <article key={index}>
-          <Link to={`/cocktails/${cocktail.drinkName}`}>
+          <Link to={`/cocktails/${cocktail._id}`}>
           <div className={styles.imageWrapper}>
                 <img
                   src={cocktail.image}

@@ -1,54 +1,28 @@
 import React, { useState } from "react";
 import styles from "../Form.module.css";
 
-const unitOptions = ["oz", "tsp", "tbsp", "ml", "dash", "drop", "cup", "part"];
+const unitOptions = ['oz', 'tsp', 'tbsp', 'ml', 'dash', 'drop', 'cup', 'part'];
 const glassesArr = [
-  "Highball glass",
-  "Old-fashioned glass",
-  "Cocktail glass",
-  "Copper Mug",
-  "Whiskey Glass",
-  "Collins glass",
-  "Pousse cafe glass",
-  "Champagne flute",
-  "Whiskey sour glass",
-  "Brandy snifter",
-  "White wine glass",
-  "Nick and Nora Glass",
-  "Hurricane glass",
-  "Coffee mug",
-  "Shot glass",
-  "Jar",
-  "Irish coffee cup",
-  "Punch bowl",
-  "Pitcher",
-  "Pint glass",
-  "Cordial glass",
-  "Beer mug",
-  "Margarita/Coupette glass",
-  "Beer pilsner",
-  "Beer Glass",
-  "Parfait glass",
-  "Wine Glass",
-  "Mason jar",
-  "Margarita glass",
-  "Martini Glass",
-  "Balloon Glass",
-  "Coupe Glass",
+  'Highball glass', 'Old-fashioned glass', 'Cocktail glass', 'Copper Mug', 'Whiskey Glass', 'Collins glass', 
+  'Pousse cafe glass', 'Champagne flute', 'Whiskey sour glass', 'Brandy snifter', 'White wine glass', 
+  'Nick and Nora Glass', 'Hurricane glass', 'Coffee mug', 'Shot glass', 'Jar', 'Irish coffee cup', 
+  'Punch bowl', 'Pitcher', 'Pint glass', 'Cordial glass', 'Beer mug', 'Margarita/Coupette glass', 
+  'Beer pilsner', 'Beer Glass', 'Parfait glass', 'Wine Glass', 'Mason jar', 'Margarita glass', 
+  'Martini Glass', 'Balloon Glass', 'Coupe Glass'
 ];
 
 export default function CocktailForm() {
-  const [cocktailName, setCocktailName] = useState("");
-  const [directions, setDirections] = useState("");
-  const [glass, setGlass] = useState(glassesArr[""]);
+  const [cocktailName, setCocktailName] = useState('');
+  const [directions, setDirections] = useState('');
+  const [glass, setGlass] = useState(glassesArr[0]);
   const [ingredients, setIngredients] = useState([
-    { name: "", amount: "", unit: "oz" },
+    { name: '', amount: '', unit: 'oz' },
   ]);
 
   const handleIngredientChange = (index, field, value) => {
-    const updated = [...ingredients];
-    updated[index][field] = value;
-    setIngredients(updated);
+    const updatedIngredients = [...ingredients];
+    updatedIngredients[index][field] = value;
+    setIngredients(updatedIngredients);
   };
 
   const addIngredient = () => {
@@ -56,13 +30,8 @@ export default function CocktailForm() {
   };
 
   const removeIngredient = (index) => {
-    const filtered = ingredients.filter((_, i) => i !== index);
-    setIngredients(filtered);
-  };
-
-  const joinIngredients = (index) => {
-    const ingredient = ingredients[index];
-    console.log(`${ingredient.name} : ${ingredient.amount} ${ingredient.unit}`);
+    const updatedIngredients = ingredients.filter((_, i) => i !== index);
+    setIngredients(updatedIngredients);
   };
 
   return (
@@ -70,6 +39,7 @@ export default function CocktailForm() {
       <form className={styles.formContainer}>
         <h1 className={styles.formTitle}>Make Your Own Recipe</h1>
 
+        {/* Cocktail Name */}
         <div>
           <label>Cocktail Name</label>
           <input
@@ -79,6 +49,7 @@ export default function CocktailForm() {
           />
         </div>
 
+        {/* Ingredients */}
         <div>
           <label>Ingredients</label>
           {ingredients.map((ingredient, index) => (
@@ -111,15 +82,14 @@ export default function CocktailForm() {
                   </option>
                 ))}
               </select>
-              <div className={styles.buttonGroup}>
-                <button type="button" onClick={() => removeIngredient(index)}>
-                  Remove Ingredient
-                </button>
-              </div>
+              <button type="button" onClick={() => removeIngredient(index)}>
+                Remove Ingredient
+              </button>
             </div>
           ))}
         </div>
 
+        {/* Glassware */}
         <div>
           <label>Glassware</label>
           <input
@@ -135,6 +105,7 @@ export default function CocktailForm() {
           </datalist>
         </div>
 
+        {/* Directions */}
         <div>
           <label>Directions</label>
           <textarea
@@ -142,6 +113,8 @@ export default function CocktailForm() {
             onChange={(e) => setDirections(e.target.value)}
           />
         </div>
+
+        {/* Submit and Add Ingredient */}
         <div className={styles.buttonGroup}>
           <button type="button" onClick={addIngredient}>
             Add Ingredient
